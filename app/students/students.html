@@ -1,5 +1,15 @@
 <h2>Students</h2>
 <ul>
+
+	<input type="search" ng-model="query.FullName" />
+
 	<li>Here are your students...</li>
-	<li ng-repeat="student in students">{{ student.FirstName + ' ' + student.LastName }}</li>
+	<li ng-repeat="student in students | filter:query">
+		<span ng-click="toggle = !toggle">{{ student.FullName }}<span>
+		<p ng-show="toggle">Favorite food: {{ student.FavoriteFood }}<br>
+			Favorite Color: {{ student.FavoriteColor }}<br>
+			Favorite Movie: {{ student.FavoriteMovie }}<br>
+			Student Id: {{ student.Id }}
+		</p>
+	</li>
 </ul>

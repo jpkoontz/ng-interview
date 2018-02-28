@@ -13,6 +13,7 @@
 		 */
 
 		var vm = this;
+
 		/**
 		 * Initialization
 		 */
@@ -23,6 +24,8 @@
 		 * Implementations
 		 */
 
+
+
 		function getStudents() {
 			StudentsService.getStudents()
 			.then(function(response) {
@@ -30,6 +33,9 @@
 					 getStudents();
 				} else {
 					$scope.students = response.data;
+					angular.forEach($scope.students, function(value, key) {
+						value.FullName = value.FirstName + ' ' + value.LastName;
+					})
 					return response;
 				}
 			}).catch(function(error) {
